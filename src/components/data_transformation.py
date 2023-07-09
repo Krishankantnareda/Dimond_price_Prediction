@@ -30,7 +30,7 @@ class DataTransFormation:
 
             # Define the custom ranking for each ordinal variable
             cut_categories = ['Ideal','Very Good','Good','Premium','Fair']
-            color_categories = ['G','D','H','I','E','J','F']
+            color_categories = ['F', 'J', 'G', 'E', 'D', 'H', 'I']
             clarity_categories =['SI1','VS2','VS1','SI2','VVS2','VVS1','IF','I1']
 
             logging.info("Pipeline Initiated")
@@ -62,7 +62,8 @@ class DataTransFormation:
             logging.info("Error in Data Trnasformation")
             raise CustomException(e,sys)
         
-def initaite_data_transformation(self,train_path,test_path):
+    def initaite_data_transformation(self,train_path,test_path):
+
         try:
             # Reading train and test data
             train_df = pd.read_csv(train_path)
@@ -74,7 +75,7 @@ def initaite_data_transformation(self,train_path,test_path):
 
             logging.info('Obtaining preprocessing object')
 
-            preprocessing_obj = self.get_data_transformation_object()
+            preprocessing_obj = self.get_data_tranceformation_config()
             
             target_column_name = 'price'
             drop_columns = [target_column_name,'id']
@@ -95,18 +96,15 @@ def initaite_data_transformation(self,train_path,test_path):
             train_arr = np.c_[input_feature_train_arr, np.array(target_feature_train_df)]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
-            save_object(
-
-                file_path=self.data_transformation_config.preprocessor_obj_file_path,
-                obj=preprocessing_obj
-
+            save_object(file_path=self.Data_tranceformation_config.preprocessor_obj_file_path,
+                        obj=preprocessing_obj
             )
             logging.info('Preprocessor pickle file saved')
 
             return (
                 train_arr,
                 test_arr,
-                self.data_transformation_config.preprocessor_obj_file_path,
+                self.Data_tranceformation_config.preprocessor_obj_file_path,
             )
 
 

@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import pandas as pd 
 from sklearn.model_selection import train_test_split
 
-from src.components.data_transformation import DataTransFormation ,initaite_data_transformation
+from src.components.data_transformation import DataTransFormation 
 
 ## Intitialize the Data Ingetion Configuration
 
