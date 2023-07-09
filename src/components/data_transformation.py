@@ -30,7 +30,7 @@ class DataTransFormation:
 
             # Define the custom ranking for each ordinal variable
             cut_categories = ['Ideal','Very Good','Good','Premium','Fair']
-            color_categories = ['F', 'J', 'G', 'E', 'D', 'H', 'I']
+            color_categories = ['G', 'E', 'F', 'H', 'D', 'I', 'J']
             clarity_categories =['SI1','VS2','VS1','SI2','VVS2','VVS1','IF','I1']
 
             logging.info("Pipeline Initiated")
@@ -87,6 +87,13 @@ class DataTransFormation:
             target_feature_test_df=test_df[target_column_name]                  #y_test
             
             ## Trnasformating using preprocessor obj
+            print("_________________________________________________")
+            print(input_feature_train_df['color'].value_counts())
+            print("Train")
+            print(input_feature_test_df['color'].value_counts())
+            print("Train")
+            print("_______________________________")
+            
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
