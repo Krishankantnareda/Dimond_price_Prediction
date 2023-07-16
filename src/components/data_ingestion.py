@@ -1,5 +1,5 @@
-import os # to create a path & save a file 
-import sys
+import os # to create a path & save a file & creating Directory
+import sys # Control the standard input, output and error streams using sys.stdin, sys.stdout and sys.stderr
 from src.logger import logging
 from src.exception import CustomException
 import pandas as pd
@@ -13,7 +13,7 @@ from src.components.data_transformation import DataTransformation
 
 @dataclass
 class DataIngestionconfig:
-    train_data_path:str=os.path.join('artifacts','train.csv') # which data these three file will containing
+    train_data_path:str=os.path.join('artifacts','train.csv') # Q. which data these three file will containing
     test_data_path:str=os.path.join('artifacts','test.csv')
     raw_data_path:str=os.path.join('artifacts','raw.csv')
 
@@ -52,7 +52,7 @@ class DataIngestion:
 # Run data_ingestion
 if __name__=="__main__":
     obj = DataIngestion()
-    train_data_path1,test_data_path2 = obj.initiate_data_ingestion()
+    train_data_path,test_data_path = obj.initiate_data_ingestion()
     data_transformation = DataTransformation()
-    train_arr,test_arr,_ = data_transformation.initaite_data_transformation(train_data_path1,test_data_path2)
+    train_arr,test_arr,_ = data_transformation.initaite_data_transformation(train_data_path,test_data_path)
 
